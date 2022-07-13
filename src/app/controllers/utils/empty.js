@@ -1,0 +1,3 @@
+array = []
+
+module.exports = array
