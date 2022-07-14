@@ -76,17 +76,18 @@ const controller = {
         return res.status(200).json(result.message)
     },
 
-    /* findByGenre: (req, res) => {
+    findByGenre: (req, res) => {
         const { genre } = req.query
 
         const result = ListMovieService.genre(genre)
 
-        if (!result.succeed) {
-            return res.status(400).json(result.message)
+        if (result.length === 0) {
+            const erro = {message: "DESCUBRA"}
+            return res.status(400).json(erro.message)
         }
 
-        return res.status(200).json(result.message)
-    }, */
+        return res.status(200).json(result)
+    },
 
     update: (req, res) => {
         const { id } = req.params

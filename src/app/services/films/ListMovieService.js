@@ -86,27 +86,15 @@ const ListMovieService = {
         }
     },
 
-    /* MUITA COISA A CORRIGIR:
-    
     genre: (genre) => {
         const movies = ListMovieService.itens()
 
-        for (let i = 0; movies.length > i; i++) {
-            for (let j = 0; movies[i].genre.length > j; j++) {
-                if (movies[i].genre[j] == genre) {
-                    return {
-                        succeed: true,
-                        message: movies[i]
-                    }
-                } else {
-                    return {
-                        succeed: false,
-                        message: "Algo deu errado!"
-                    }
-                }
+        return movies.filter((movie) => {
+            for (let i = 0; movie.genre.length > i; i++) {
+                if (movie.genre[i] === genre) { return movie }
             }
-        }
-    } */
+        })
+    }
 }
 
 module.exports = ListMovieService
