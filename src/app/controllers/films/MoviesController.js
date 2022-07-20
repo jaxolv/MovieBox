@@ -20,11 +20,6 @@ const controller = {
             rotten
         } = req.body
 
-        /* if (!title || !duration || !genre) {
-            const erro = { message: "Os campos 'título', 'duração' e 'gênero' são obrigatórios." }
-            return res.status(400).json(erro.message)
-        } */
-
         const movieCreated = CreateMovieService.create(
             v4(),
             title,
@@ -102,11 +97,6 @@ const controller = {
             imdb,
             rotten
         } = req.body
-
-        if (!title || !duration || !genre) {
-            const erro = { message: "Os campos 'título', 'duração' e 'gênero' são obrigatórios." }
-            return res.status(400).json(erro.message)
-        }
 
         const updatedMovie = UpdateMovieService.update(
             Number(id),
