@@ -27,18 +27,18 @@ const ListMovieService = {
 
         const film3 = new MovieModel(
             3,
-            "Avengers 4",
-            "Endgame",
-            2019,
+            "Shrek 2",
+            "",
+            2004,
             "EUA",
-            181,
-            ["action", "superhero"],
-            8.4,
-            { "tomatometer": 94, "audience": 90 })
+            92,
+            ["comedy", "animation"],
+            7.3,
+            { "tomatometer": 89, "audience": 69 })
 
         const film4 = new MovieModel(
             4,
-            "The Usual Suspects",
+            "Os Suspeitos",
             "",
             1995,
             "EUA",
@@ -47,7 +47,31 @@ const ListMovieService = {
             8.5,
             { "tomatometer": 88, "audience": 96 })
 
-        return [film1, film2, film3, film4]
+        const film5 = new MovieModel(
+            5,
+            "Thor 4",
+            "Amor e Trovão",
+            2022,
+            "EUA",
+            125,
+            ["superhero", "comedy"],
+            6.8,
+            { "tomatometer": 68, "audience": 78 }
+        )
+
+        const film6 = new MovieModel(
+            6,
+            "Doutor Estranho 2",
+            "No Multiverso da Loucura",
+            2022,
+            "EUA",
+            126,
+            ["superhero", "adventure"],
+            7,
+            { "tomatometer": 74, "audience": 85 }
+        )
+
+        return [film1, film2, film3, film4, film5, film6]
     },
 
     title: (title) => {
