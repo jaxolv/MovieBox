@@ -17,13 +17,6 @@ const UpdateMovieService = {
 
         const movieIndex = movies.findIndex(movie => movie.id === Number(id))
 
-        /* if (movieIndex === -1) {
-            return {
-                succeed: false,
-                message: "ID não corresponde a nenhum filme cadastrado."
-            }
-        } */
-
         movies[movieIndex] = {
             id,
             title,

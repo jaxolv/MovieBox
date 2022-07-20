@@ -1,4 +1,5 @@
 const yup = require('yup')
+const ListMovieService = require('../app/services/films/ListMovieService')
 
 async function MoviesValidator(req, res, next) {
     const schema = yup.object().shape({
@@ -25,11 +26,11 @@ async function MoviesValidator(req, res, next) {
             .typeError(),
         duration: yup
             .number()
-            .required("Informe a duração do filme em minutos")
+            .required()
             .positive()
-            .integer()
+            .integer("A duração deve ser informada em minutos.")
             .strict()
-            .typeError(),
+            .typeError("Informe a duração do filme em minutos"),
         genre: yup
             .array()
             .required()
@@ -63,4 +64,25 @@ async function MoviesValidator(req, res, next) {
     next()
 }
 
-module.exports = MoviesValidator
+async function IndexValidator(req, res, next) {
+    const schema = yup.object().shape({
+        id: yup
+            .number()
+            .integer()
+            .min(1)
+            .max(ListMovieService.itens().length)
+    })
+
+    await schema.validate(req.params).catch(err => {
+        return res.status(400).json({
+            message: err.errors
+        })
+    })
+
+    next()
+}
+
+module.exports = {
+    MoviesValidator,
+    IndexValidator
+}
