@@ -114,9 +114,7 @@ const ListMovieService = {
         const movies = ListMovieService.itens()
 
         return movies.filter((movie) => {
-            for (let i = 0; movie.genre.length > i; i++) {
-                if (movie.genre[i] === genre) { return movie }
-            }
+            if (movie.genre.find(Genre => Genre === genre)) { return movie }
         })
     }
 }
