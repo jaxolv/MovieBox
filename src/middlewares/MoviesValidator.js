@@ -1,5 +1,4 @@
 const yup = require('yup')
-const ListMovieService = require('../app/services/films/ListMovieService')
 
 async function MoviesValidator(req, res, next) {
     const schema = yup.object().shape({
@@ -64,25 +63,4 @@ async function MoviesValidator(req, res, next) {
     next()
 }
 
-async function IndexValidator(req, res, next) {
-    const schema = yup.object().shape({
-        id: yup
-            .number()
-            .integer()
-            .min(1)
-            .max(ListMovieService.itens().length)
-    })
-
-    await schema.validate(req.params).catch(err => {
-        return res.status(400).json({
-            message: err.errors
-        })
-    })
-
-    next()
-}
-
-module.exports = {
-    MoviesValidator,
-    IndexValidator
-}
+module.exports = MoviesValidator
