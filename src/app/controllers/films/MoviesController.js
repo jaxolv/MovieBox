@@ -1,4 +1,3 @@
-const array = require('../utils/empty')
 const CreateMovieService = require('../../services/films/CreateMovieService')
 const ListMovieService = require('../../services/films/ListMovieService')
 const UpdateMovieService = require('../../services/films/UpdateMovieService')

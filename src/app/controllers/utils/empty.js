@@ -1,3 +1,0 @@
-array = []
-
-module.exports = array

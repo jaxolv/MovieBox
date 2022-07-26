@@ -113,9 +113,7 @@ const ListMovieService = {
     genre: (genre) => {
         const movies = ListMovieService.itens()
 
-        return movies.filter((movie) => {
-            if (movie.genre.find(Genre => Genre === genre)) { return movie }
-        })
+        return movies.filter((movie) => { if (movie.genre.find(Genre => Genre === genre)) { return movie } })
     }
 }
 
