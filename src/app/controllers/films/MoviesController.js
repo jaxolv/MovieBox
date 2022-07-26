@@ -36,7 +36,7 @@ const controller = {
             return res.status(400).json(movieCreated.message)
         }
 
-        movies.push(movieCreated.message)
+        movies.unshift(movieCreated.message)
 
         return res.status(200).json(movies)
     },
@@ -99,7 +99,7 @@ const controller = {
         } = req.body
 
         const updatedMovie = UpdateMovieService.update(
-            Number(id),
+            id,
             title,
             subtitle,
             year,

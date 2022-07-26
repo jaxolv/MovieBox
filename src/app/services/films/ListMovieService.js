@@ -4,7 +4,7 @@ const ListMovieService = {
     itens: () => {
 
         const film1 = new MovieModel(
-            1,
+            "a07b45c4-23aa-4e73-a7bb-cfdd9b3987c6",
             "Seven",
             "Os Sete Crimes Capitais",
             1995,
@@ -15,7 +15,7 @@ const ListMovieService = {
             { "tomatometer": 86, "audience": 95 })
 
         const film2 = new MovieModel(
-            2,
+            "9c1fcbc5-2da8-4fd5-a521-5df516b6499e",
             "Cidade de Deus",
             "",
             2002,
@@ -26,7 +26,7 @@ const ListMovieService = {
             { "tomatometer": 91, "audience": 97 })
 
         const film3 = new MovieModel(
-            3,
+            "1a14c837-8ff3-4bca-bf62-32bdce263524",
             "Shrek 2",
             "",
             2004,
@@ -37,7 +37,7 @@ const ListMovieService = {
             { "tomatometer": 89, "audience": 69 })
 
         const film4 = new MovieModel(
-            4,
+            "fbca1f07-f327-4e5a-964f-e98ca3caacab",
             "Os Suspeitos",
             "",
             1995,
@@ -48,7 +48,7 @@ const ListMovieService = {
             { "tomatometer": 88, "audience": 96 })
 
         const film5 = new MovieModel(
-            5,
+            "d9016a66-53b6-406e-a95f-739b9c4f9bce",
             "Thor 4",
             "Amor e Trovão",
             2022,
@@ -60,15 +60,15 @@ const ListMovieService = {
         )
 
         const film6 = new MovieModel(
-            6,
-            "Doutor Estranho 2",
-            "No Multiverso da Loucura",
-            2022,
+            "3b1f216a-ac60-4fb0-b790-827e9c2e80ba",
+            "A Grande Aposta",
+            "",
+            2015,
             "EUA",
-            126,
-            ["superhero", "adventure"],
-            7,
-            { "tomatometer": 74, "audience": 85 }
+            130,
+            ["drama", "comedy"],
+            7.8,
+            { "tomatometer": 89, "audience": 88 }
         )
 
         return [film1, film2, film3, film4, film5, film6]
