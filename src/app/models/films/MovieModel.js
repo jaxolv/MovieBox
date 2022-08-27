@@ -11,8 +11,11 @@ export default class MovieModel extends Model {
                 country: Sequelize.STRING,
                 duration: Sequelize.INTEGER,
                 genre: Sequelize.STRING,
-                imdb: Sequelize.STRING,
-                rotten: Sequelize.STRING
+                imdb: Sequelize.FLOAT(3,1),
+                rotten: {
+                    tomatometer: Sequelize.INTEGER,
+                    audience: Sequelize.INTEGER
+                }
             },
             {
                 sequelize
