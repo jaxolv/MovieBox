@@ -1,3 +1,4 @@
-/node_modules
-/anotações.txt
-/testes.js
+node_modules
+anotações.txt
+testes.js
+.env

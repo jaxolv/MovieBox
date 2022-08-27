@@ -1,7 +1,9 @@
-const MovieModel = require('../../models/films/MovieModel')
+import MovieModel from '../../models/films/MovieModel';
 
-const ListMovieService = {
-    itens: () => {
+class ListMovieService {
+    constructor() {}
+
+    itens() {
 
         const film1 = new MovieModel(
             "a07b45c4-23aa-4e73-a7bb-cfdd9b3987c6",
@@ -72,9 +74,9 @@ const ListMovieService = {
         )
 
         return [film1, film2, film3, film4, film5, film6]
-    },
+    }
 
-    title: (title) => {
+    title(title) {
         const movies = ListMovieService.itens()
 
         const movieIndex = movies.findIndex(movie => movie.title === title)
@@ -90,9 +92,9 @@ const ListMovieService = {
             succeed: true,
             message: movies[movieIndex]
         }
-    },
+    }
 
-    year: (year) => {
+    year(year) {
         const movies = ListMovieService.itens()
 
         const list = movies.filter((movie) => movie.year === Number(year))
@@ -108,13 +110,13 @@ const ListMovieService = {
             succeed: true,
             message: list
         }
-    },
+    }
 
-    genre: (genre) => {
+    genre(genre) {
         const movies = ListMovieService.itens()
 
         return movies.filter((movie) => { if (movie.genre.find(Genre => Genre === genre)) { return movie } })
     }
 }
 
-module.exports = ListMovieService
+export default ListMovieService;

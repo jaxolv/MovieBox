@@ -1,11 +1,11 @@
-const { v4 } = require('uuid')
-const CreateUserService = require('../../services/users/CreateUserService')
+import { v4 } from "uuid";
+import CreateUserService from '../../services/users/CreateUserService';
 
-const controller = {
-    create: (req, res) => {
+class CreateUserController {
+    create(req, res) {
         const {
-            name, 
-            username, 
+            name,
+            username,
             biography,
             email,
             password,
@@ -28,4 +28,4 @@ const controller = {
     }
 }
 
-module.exports = controller
+export default CreateUserController;

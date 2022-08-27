@@ -1,23 +1,22 @@
-function MovieModel(
-    id,
-    title,
-    subtitle,
-    year,
-    country,
-    duration,
-    genre,
-    imdb,
-    rotten
-) {
-    this.id = id,
-    this.title = title,
-    this.subtitle = subtitle,
-    this.year = year,
-    this.country = country,
-    this.duration = duration,
-    this.genre = genre,
-    this.imdb = imdb,
-    this.rotten = rotten
-}
+import Sequelize, { Model } from "sequelize";
 
-module.exports = MovieModel
+export default class MovieModel extends Model {
+    static init(sequelize) {
+        super.init(
+            {
+                id: Sequelize.UUIDV4(),
+                title: Sequelize.STRING,
+                subtitle: Sequelize.STRING,
+                year: Sequelize.INTEGER,
+                country: Sequelize.STRING,
+                duration: Sequelize.INTEGER,
+                genre: Sequelize.STRING,
+                imdb: Sequelize.STRING,
+                rotten: Sequelize.STRING
+            },
+            {
+                sequelize
+            }
+        );
+    }
+}
