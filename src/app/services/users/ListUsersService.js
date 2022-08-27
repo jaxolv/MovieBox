@@ -23,6 +23,8 @@ class ListUsersService {
             64,
             'BRA'
         )
+
+        return [user1, user2]
     }
 }
 

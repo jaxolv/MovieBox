@@ -13,7 +13,7 @@ import multerConfig from './config/multer';
 const routes = new Router();
 const uploadFile = multer({ storage: multerConfig })
 
-routes.post('/uploads', uploadFile.single('file'), uploadFileController.storeFile);
+// routes.post('/uploads', uploadFile.single('file'), uploadFileController.storeFile);
 
 // CRUD movies
 import ListAllMoviesController from "./app/controllers/films/ListAllMoviesController";
@@ -36,9 +36,12 @@ routes.delete('/movies/:id/delete', IndexValidator, (req, res) => deleteMovieCon
 
 // CRUD users
 import CreateUserController from "./app/controllers/users/CreateUserController";
+import ListAllUsersController from "./app/controllers/users/ListAllUsersController";
 
 const createUserController = new CreateUserController();
+const listAllUsersController = new ListAllUsersController();
 
 routes.post('/users/create', UsersValidator, (req, res) => createUserController.create(req, res));
+routes.get('/users', UsersValidator, (req, res) => listAllUsersController.listAll(req, res));
 
 export default routes;
