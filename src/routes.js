@@ -1,10 +1,12 @@
 import Router from "express";
 import multer from "multer";
 
-import usersController from './app/controllers/users/UsersController';
+// VALIDAÇÕES
 import IndexValidator from './middlewares/IndexValidator';
 import MoviesValidator from './middlewares/MoviesValidator';
 import UsersValidator from './middlewares/UsersValidator';
+
+// UPLOAD DE ARQUIVOS (MULTER)
 import uploadFileController from './app/controllers/utils/uploadFileController';
 import multerConfig from './config/multer';
 
@@ -33,6 +35,10 @@ routes.put('/movies/:id/edit', IndexValidator, MoviesValidator, (req, res) => up
 routes.delete('/movies/:id/delete', IndexValidator, (req, res) => deleteMovieController.delete(req, res));
 
 // CRUD users
-routes.post('/users/create', UsersValidator, usersController.create);
+import CreateUserController from "./app/controllers/users/CreateUserController";
+
+const createUserController = new CreateUserController();
+
+routes.post('/users/create', UsersValidator, (req, res) => createUserController.create(req, res));
 
 export default routes;

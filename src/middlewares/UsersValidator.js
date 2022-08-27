@@ -1,6 +1,6 @@
-const yup = require('yup')
+import yup from "yup"
 
-async function UsersValidator(req, res, next) {
+export default async function UsersValidator(req, res, next) {
     const schema = yup.object().shape({
         name: yup
             .string()
@@ -57,5 +57,3 @@ async function UsersValidator(req, res, next) {
 
     next()
 }
-
-module.exports = UsersValidator

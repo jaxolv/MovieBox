@@ -1,6 +1,6 @@
-const yup = require('yup')
+import yup from "yup"
 
-async function MoviesValidator(req, res, next) {
+export default async function MoviesValidator(req, res, next) {
     const schema = yup.object().shape({
         title: yup
             .string()
@@ -62,5 +62,3 @@ async function MoviesValidator(req, res, next) {
 
     next()
 }
-
-module.exports = MoviesValidator

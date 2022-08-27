@@ -1,6 +1,6 @@
-const yup = require('yup')
+import yup from "yup"
 
-async function IndexValidator(req, res, next) {
+export default async function IndexValidator(req, res, next) {
     const schema = yup.object().shape({
         id: yup
             .string()
@@ -16,5 +16,3 @@ async function IndexValidator(req, res, next) {
 
     next()
 }
-
-module.exports = IndexValidator
