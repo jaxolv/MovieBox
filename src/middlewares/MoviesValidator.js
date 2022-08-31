@@ -1,4 +1,4 @@
-import yup from "yup"
+import * as yup from "yup";
 
 export default async function MoviesValidator(req, res, next) {
     const schema = yup.object().shape({

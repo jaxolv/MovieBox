@@ -1,12 +1,11 @@
 import CreateMovieService from '../../services/films/CreateMovieService';
-import { v4 } from 'uuid';
-
+import { v4 } from "uuid";
 export default class CreateMovieController {
-    constructor() { }
+    constructor() {
+        this.service = new CreateMovieService();
+    }
 
-    create(req, res) {
-        const movies = array
-
+    async create(req, res) {
         const {
             title,
             subtitle,
@@ -15,10 +14,11 @@ export default class CreateMovieController {
             duration,
             genre,
             imdb,
-            rotten
+            rottenTomatometer,
+            rottenAudience
         } = req.body
 
-        const movieCreated = CreateMovieService.create(
+        const movieCreated = await this.service.create(
             v4(),
             title,
             subtitle,
@@ -27,15 +27,10 @@ export default class CreateMovieController {
             duration,
             genre,
             imdb,
-            rotten
+            rottenTomatometer,
+            rottenAudience
         )
 
-        if (!movieCreated.succeed) {
-            return res.status(400).json(movieCreated.message)
-        }
-
-        movies.unshift(movieCreated.message)
-
-        return res.status(200).json(movies)
+        return res.json(movieCreated)
     }
 }

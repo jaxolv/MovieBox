@@ -1,8 +1,8 @@
 'use strict';
 
 module.exports = {
-  up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('movies', {
+  async up(queryInterface, Sequelize) {
+    return await queryInterface.createTable("movies", {
       id: {
         type: Sequelize.UUID,
         defaultValue: Sequelize.UUIDV4,
@@ -37,20 +37,18 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       },
-      rotten: {
-        tomatometer: {
-          type: Sequelize.STRING,
-          allowNull: false
-        },
-        audience: {
-          type: Sequelize.STRING,
-          allowNull: false
-        }
+      rottenTomatometer: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+      rottenAudience: {
+        type: Sequelize.STRING,
+        allowNull: false
       }
     })
   },
 
-  down: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('movies');
+  async down(queryInterface, Sequelize) {
+    return await queryInterface.dropTable("movies");
   }
 };

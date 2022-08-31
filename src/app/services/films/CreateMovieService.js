@@ -1,7 +1,10 @@
-const MovieModel = require('../../models/films/MovieModel')
+import { v4 } from "uuid";
+import MovieModel from '../../models/films/MovieModel'
 
-const CreateMovieService = {
-    create: (
+export default class CreateMovieService {
+    constructor() { }
+
+    async create(
         id,
         title,
         subtitle,
@@ -10,22 +13,27 @@ const CreateMovieService = {
         duration,
         genre,
         imdb,
-        rotten
-    ) => {
-        const movie = new MovieModel(
-            id,
-            title,
-            subtitle,
-            year,
-            country,
-            duration,
-            genre,
-            imdb,
-            rotten
-        )
+        rottenTomatometer,
+        rottenAudience
+    ) {
+        try {
+            const newMovie = await MovieModel.create({
+                id: v4(),
+                title,
+                subtitle,
+                year,
+                country,
+                duration,
+                genre,
+                imdb,
+                rottenTomatometer,
+                rottenAudience
+            })
 
-        return { succeed: true, message: movie }
+            return newMovie;
+
+        } catch (error) {
+            return { error: error.message }
+        }
     }
 }
-
-module.exports = CreateMovieService
