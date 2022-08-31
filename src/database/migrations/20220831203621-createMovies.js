@@ -38,11 +38,11 @@ module.exports = {
         allowNull: false
       },
       rottenTomatometer: {
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
         allowNull: false
       },
       rottenAudience: {
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
         allowNull: false
       }
     })

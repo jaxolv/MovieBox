@@ -1,8 +1,12 @@
 import { v4 } from "uuid";
 import CreateUserService from '../../services/users/CreateUserService';
 
-class CreateUserController {
-    create(req, res) {
+export default class CreateUserController {
+    constructor() {
+        this.service = new CreateUserService();
+    }
+
+    async create(req, res) {
         const {
             name,
             username,
@@ -13,7 +17,7 @@ class CreateUserController {
             country
         } = req.body
 
-        const user = CreateUserService.create(
+        const user = await this.service.create(
             v4(),
             name,
             username,
@@ -27,5 +31,3 @@ class CreateUserController {
         return res.status(200).json(user.message)
     }
 }
-
-export default CreateUserController;

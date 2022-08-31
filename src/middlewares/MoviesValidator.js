@@ -39,17 +39,16 @@ export default async function MoviesValidator(req, res, next) {
         imdb: yup
             .number()
             .max(10),
-        rotten: yup
-            .object({
-                tomatometer: yup
-                    .number()
-                    .integer()
-                    .max(100),
-                audience: yup
-                    .number()
-                    .integer()
-                    .max(100)
-            })
+        rottenTomatometer: yup
+            .number()
+            .integer()
+            .max(100)
+            .strict()
+            .typeError(),
+        rottenAudience: yup
+            .number()
+            .integer()
+            .max(100)
             .strict()
             .typeError()
     })

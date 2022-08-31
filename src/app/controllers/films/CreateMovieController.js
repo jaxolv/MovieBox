@@ -1,5 +1,5 @@
-import CreateMovieService from '../../services/films/CreateMovieService';
 import { v4 } from "uuid";
+import CreateMovieService from '../../services/films/CreateMovieService';
 export default class CreateMovieController {
     constructor() {
         this.service = new CreateMovieService();

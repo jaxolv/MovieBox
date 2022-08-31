@@ -20,7 +20,7 @@ export default async function UsersValidator(req, res, next) {
         biography: yup
             .string()
             .strict()
-            .max(250)
+            .max(255)
             .typeError(),
         email: yup
             .string()

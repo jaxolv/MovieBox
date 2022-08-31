@@ -13,7 +13,7 @@ UsersModel.init(
         },
         name: Sequelize.STRING,
         username: Sequelize.STRING,
-        biography: Sequelize.INTEGER,
+        biography: Sequelize.STRING,
         email: Sequelize.STRING,
         password: Sequelize.STRING,
         age: Sequelize.INTEGER,
@@ -22,7 +22,7 @@ UsersModel.init(
     {
         sequelize,
         modelName: "users",
-        timestamps: true
+        timestamps: false
     }
 )
 
