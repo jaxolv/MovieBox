@@ -1,9 +1,8 @@
 import { v4 } from "uuid";
 import CreateMovieService from '../../services/films/CreateMovieService';
+
 export default class CreateMovieController {
-    constructor() {
-        this.service = new CreateMovieService();
-    }
+    constructor() { this.service = new CreateMovieService(); }
 
     async create(req, res) {
         const {
@@ -19,7 +18,6 @@ export default class CreateMovieController {
         } = req.body
 
         const movieCreated = await this.service.create(
-            v4(),
             title,
             subtitle,
             year,

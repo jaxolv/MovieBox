@@ -1,15 +1,19 @@
 import ListMovieService from '../../services/films/ListMovieService';
 
-class ListAllMoviesController {
-    constructor() {}
-
-    listAll(req, res) {
-        const movies = ListMovieService.itens()
-
-        return res.status(200).json(movies)
+export default class ListAllMoviesController {
+    constructor() {
+        this.service = new ListMovieService();
     }
 
-    findByName(req, res) {
+    async index(req, res) {
+        const { title } = req.query;
+
+        const movies = await this.service.listAll(title)
+
+        res.status(200).json(movies)
+    }
+
+    /* byName(req, res) {
         const { title } = req.query
 
         const result = ListMovieService.title(title)
@@ -19,9 +23,9 @@ class ListAllMoviesController {
         }
 
         return res.status(200).json(result.message)
-    }
+    } */
 
-    findByYear(req, res) {
+    /* findByYear(req, res) {
         const { year } = req.params
 
         const result = ListMovieService.year(year)
@@ -31,9 +35,9 @@ class ListAllMoviesController {
         }
 
         return res.status(200).json(result.message)
-    }
+    } */
 
-    findByGenre(req, res) {
+    /* findByGenre(req, res) {
         const { genre } = req.query
 
         const result = ListMovieService.genre(genre)
@@ -44,7 +48,5 @@ class ListAllMoviesController {
         }
 
         return res.status(200).json(result)
-    }
+    } */
 }
-
-export default ListAllMoviesController;

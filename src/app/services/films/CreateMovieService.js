@@ -2,10 +2,9 @@ import { v4 } from "uuid";
 import MovieModel from '../../models/films/MovieModel'
 
 export default class CreateMovieService {
-    constructor() {}
+    constructor() { }
 
     async create(
-        id,
         title,
         subtitle,
         year,
