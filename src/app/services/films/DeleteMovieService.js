@@ -1,25 +1,22 @@
-const ListMovieService = require('../../services/films/ListMovieService')
+import MovieModel from "../../models/films/MovieModel"
 
-const DeleteMovieService = {
-    delete: (id) => {
-        const movies = ListMovieService.itens()
+export default class DeleteMovieService {
+    constructor() { }
 
-        const movieIndex = movies.findIndex(movie => movie.id === id)
+    async deleteById(id) {
+        try {
+            const movie = await MovieModel.findByPk(id);
 
-        if (movieIndex === -1) {
-            return {
-                succeed: false,
-                message: "ID não referente a qualquer filme."
+            if (!movie) {
+                return { message: "Movie not found" }
             }
-        }
 
-        movies.splice(movieIndex, 1)
+            const deletedMovie = await movie.destroy()
 
-        return {
-            succeed: true,
-            message: movies
+            return deletedMovie
+        } catch (error) {
+            console.log(error)
+            return { error: error.message }
         }
     }
 }
-
-module.exports = DeleteMovieService

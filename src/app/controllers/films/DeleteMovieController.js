@@ -1,18 +1,16 @@
-import DeleteMovieService from '../../services/films/DeleteMovieService';
+import DeleteMovieService from "../../services/films/DeleteMovieService"
 
 class DeleteMovieController {
-    constructor() {}
+    constructor() {
+        this.service = new DeleteMovieService();
+    }
 
-    delete(req, res) {
-        const { id } = req.params
+    async delete(req, res) {
+        const { id } = req.params;
 
-        const result = DeleteMovieService.delete(id)
+        const resulte = await this.service.deleteById(id);
 
-        if (!result.succeed) {
-            return res.status(400).json(result.message)
-        }
-
-        return res.status(200).json(result.message)
+        res.send(resulte)
     }
 }
 

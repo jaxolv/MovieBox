@@ -17,7 +17,7 @@ export default class CreateMovieController {
             rottenAudience
         } = req.body
 
-        const movieCreated = await this.service.create(
+        const movieCreated = await this.service.createMovie(
             title,
             subtitle,
             year,
@@ -29,6 +29,8 @@ export default class CreateMovieController {
             rottenAudience
         )
 
-        return res.json(movieCreated)
+        console.log(movieCreated)
+
+        res.status(200).json(movieCreated)
     }
 }

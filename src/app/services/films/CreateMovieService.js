@@ -4,7 +4,7 @@ import MovieModel from '../../models/films/MovieModel'
 export default class CreateMovieService {
     constructor() { }
 
-    async create(
+    async createMovie(
         title,
         subtitle,
         year,

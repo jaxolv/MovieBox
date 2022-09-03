@@ -34,11 +34,15 @@ routes.get('/movies', (req, res) =>
 );
 /* routes.get('/movies', (req, res) =>
     listAllMoviesController.findByName(req, res)
-); */
-/* routes.get('/movies/:year', (req, res) => listAllMoviesController.findByYear(req, res)); */
-/* routes.get('/movies/genre', (req, res) => listAllMoviesController.findByGenre(req, res)); */
-routes.put('/movies/:id', IndexValidator, MoviesValidator, (req, res) => updateMovieController.update(req, res));
-routes.delete('/movies/:id', IndexValidator, (req, res) => deleteMovieController.delete(req, res));
+);
+routes.get('/movies/:year', (req, res) => listAllMoviesController.findByYear(req, res));
+routes.get('/movies/genre', (req, res) => listAllMoviesController.findByGenre(req, res)); */
+routes.put('/movies/:id', IndexValidator, MoviesValidator, (req, res) =>
+    updateMovieController.update(req, res)
+);
+routes.delete('/movies/:id', /* IndexValidator, */ (req, res) =>
+    deleteMovieController.delete(req, res)
+);
 
 // CRUD users
 import CreateUserController from "./app/controllers/users/CreateUserController";
