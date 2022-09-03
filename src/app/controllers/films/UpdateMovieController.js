@@ -1,9 +1,11 @@
 import UpdateMovieService from '../../services/films/UpdateMovieService';
 
 export default class UpdateMovieController {
-    constructor() { }
+    constructor() {
+        this.service = new UpdateMovieService();
+    }
 
-    update(req, res) {
+    async update(req, res) {
         const { id } = req.params
 
         const {
@@ -14,10 +16,11 @@ export default class UpdateMovieController {
             duration,
             genre,
             imdb,
-            rotten
+            rottenTomatometer,
+            rottenAudience
         } = req.body
 
-        const updatedMovie = UpdateMovieService.update(
+        const updatedMovie = await this.service.updateAllData(
             id,
             title,
             subtitle,
@@ -26,13 +29,11 @@ export default class UpdateMovieController {
             duration,
             genre,
             imdb,
-            rotten
+            rottenTomatometer,
+            rottenAudience
         )
 
-        if (!updatedMovie.succeed) {
-            return res.status(400).json(updatedMovie.message)
-        }
-
-        return res.status(200).json(updatedMovie.message)
+        console.log(updatedMovie)
+        res.status(200).json(updatedMovie)
     }
 }

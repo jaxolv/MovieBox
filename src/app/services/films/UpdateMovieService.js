@@ -1,7 +1,9 @@
-const ListMovieService = require('../../services/films/ListMovieService')
+import MovieModel from "../../models/films/MovieModel"
 
-const UpdateMovieService = {
-    update: (
+export default class UpdateMovieService {
+    constructor() { }
+
+    async updateAllData(
         id,
         title,
         subtitle,
@@ -11,26 +13,50 @@ const UpdateMovieService = {
         genre,
         imdb,
         rotten
-    ) => {
+    ) {
+        try {
+            const movie = await MovieModel.findByPk(id)
 
-        const movies = ListMovieService.itens()
+            if (!movie) {
+                return { erro: "Movie not found." }
+            }
 
-        const movieIndex = movies.findIndex(movie => movie.id === Number(id))
+            const [numberOfRegistersUpdated] = await MovieModel.update(
+                {
+                    title,
+                    subtitle,
+                    year,
+                    country,
+                    duration,
+                    genre,
+                    imdb,
+                    rottenTomatometer,
+                    rottenAudience
+                },
+                {
+                    where: { id }
+                }
+            )
 
-        movies[movieIndex] = {
-            id,
-            title,
-            subtitle,
-            year,
-            country,
-            duration,
-            genre,
-            imdb,
-            rotten
+            if (numberOfRegistersUpdated === 0) {
+                return { erro: "Identical data" }
+            } else {
+                return {
+                    id,
+                    title,
+                    subtitle,
+                    year,
+                    country,
+                    duration,
+                    genre,
+                    imdb,
+                    rottenTomatometer,
+                    rottenAudience
+                }
+            }
+        } catch (error) {
+            console.log(error)
+            return { error: error.message }
         }
-
-        return { succeed: true, message: movies[movieIndex] }
     }
 }
-
-module.exports = UpdateMovieService

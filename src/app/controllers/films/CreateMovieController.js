@@ -1,4 +1,3 @@
-import { v4 } from "uuid";
 import CreateMovieService from '../../services/films/CreateMovieService';
 
 export default class CreateMovieController {
