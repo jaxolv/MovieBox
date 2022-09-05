@@ -32,15 +32,16 @@ routes.post('/movies', MoviesValidator, (req, res) =>
 routes.get('/movies', (req, res) =>
     listAllMoviesController.index(req, res)
 );
-/* routes.get('/movies', (req, res) =>
-    listAllMoviesController.findByName(req, res)
+routes.get('/movies-by-year', (req, res) => 
+    listAllMoviesController.year(req, res)
 );
-routes.get('/movies/:year', (req, res) => listAllMoviesController.findByYear(req, res));
-routes.get('/movies/genre', (req, res) => listAllMoviesController.findByGenre(req, res)); */
-routes.put('/movies/:id', IndexValidator,  MoviesValidator, (req, res) =>
+routes.get('/movies-by-genre', (req, res) => 
+    listAllMoviesController.genre(req, res)
+);
+routes.put('/movies/:id', IndexValidator, MoviesValidator, (req, res) =>
     updateMovieController.update(req, res)
 );
-routes.delete('/movies/:id', /* IndexValidator, */ (req, res) =>
+routes.delete('/movies/:id', IndexValidator, (req, res) =>
     deleteMovieController.delete(req, res)
 );
 

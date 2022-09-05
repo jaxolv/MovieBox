@@ -13,40 +13,19 @@ export default class ListAllMoviesController {
         res.status(200).json(movies)
     }
 
-    /* byName(req, res) {
-        const { title } = req.query
+    async year(req, res) {
+        const { year } = req.query
 
-        const result = ListMovieService.title(title)
+        const movie = await this.service.byYear(year)
 
-        if (!result.succeed) {
-            return res.status(400).json(result.message)
-        }
+        res.status(200).json(movie)
+    }
 
-        return res.status(200).json(result.message)
-    } */
-
-    /* findByYear(req, res) {
-        const { year } = req.params
-
-        const result = ListMovieService.year(year)
-
-        if (!result.succeed) {
-            return res.status(400).json(result.message)
-        }
-
-        return res.status(200).json(result.message)
-    } */
-
-    /* findByGenre(req, res) {
+    async genre(req, res) {
         const { genre } = req.query
 
-        const result = ListMovieService.genre(genre)
+        const movie = await this.service.byGenre(genre)
 
-        if (result.length === 0) {
-            const erro = {message: "DESCUBRA"}
-            return res.status(400).json(erro.message)
-        }
-
-        return res.status(200).json(result)
-    } */
+        res.json(movie)
+    }
 }

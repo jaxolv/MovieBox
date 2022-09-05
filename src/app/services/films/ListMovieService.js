@@ -1,7 +1,7 @@
 import MovieModel from '../../models/films/MovieModel';
 
 export default class ListMoviesService {
-    constructor() {}
+    constructor() { }
 
     async listAll(title) {
         try {
@@ -13,16 +13,33 @@ export default class ListMoviesService {
 
             return movies
 
-        } catch(error) {
+        } catch (error) {
             console.log(error)
             return { error: error.message }
         }
     }
 
     async byTitle(movieTitle) {
-       try {
+        try {
             const movie = await MovieModel.findAll({
                 where: { title: movieTitle }
+            })
+
+            if (!movie) {
+                return { message: "Movie not found" }
+            }
+
+            return movie
+
+        } catch (error) {
+            return { error: error.message }
+        }
+    }
+
+    async byYear(yearOfTheMovie) {
+        try {
+            const movie = await MovieModel.findAll({
+                where: { year: yearOfTheMovie}
             })
 
             if (!movie) {
@@ -31,32 +48,27 @@ export default class ListMoviesService {
 
             return movie
 
-        } catch(error) {
-            return {error: error.message}
+        } catch (error) {
+            console.log(error)
+            return { erro: error.message }
         }
     }
 
-    /* year(year) {
-        const movies = ListMovieService.itens()
+    async byGenre(genreOfTheMovie) {
+        try {
+            const movie = await MovieModel.findAll({
+                where: { genre: genreOfTheMovie}
+            })
 
-        const list = movies.filter((movie) => movie.year === Number(year))
-
-        if (list.length === 0) {
-            return {
-                succeed: false,
-                message: "Nenhum filme do ano informado está cadastrado."
+            if (!movie) {
+                return { message: "Movie not found"}
             }
-        }
 
-        return {
-            succeed: true,
-            message: list
+            return movie
+
+        } catch (error) {
+            console.log(error)
+            return { erro: error.message }
         }
     }
-
-    genre(genre) {
-        const movies = ListMovieService.itens()
-
-        return movies.filter((movie) => { if (movie.genre.find(Genre => Genre === genre)) { return movie } })
-    } */
 }
