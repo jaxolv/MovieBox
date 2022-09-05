@@ -6,7 +6,7 @@ export default async function MoviesValidator(req, res, next) {
             .string()
             .strict()
             .required()
-            .typeError(),
+            .typeError("Deve ser uma string"),
         subtitle: yup
             .string()
             .strict()
@@ -31,10 +31,9 @@ export default async function MoviesValidator(req, res, next) {
             .strict()
             .typeError("Informe a duração do filme em minutos"),
         genre: yup
-            .array()
-            .required()
-            .max(2)
+            .string()
             .strict()
+            .required()
             .typeError(),
         imdb: yup
             .number()

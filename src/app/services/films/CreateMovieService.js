@@ -28,7 +28,7 @@ export default class CreateMovieService {
                 rottenTomatometer,
                 rottenAudience
             })
-
+            console.log(newMovie)
             return newMovie;
 
         } catch (error) {

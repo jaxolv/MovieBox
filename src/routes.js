@@ -26,7 +26,7 @@ const createMovieController = new CreateMovieController();
 const updateMovieController = new UpdateMovieController();
 const deleteMovieController = new DeleteMovieController();
 
-routes.post('/movies', /* MoviesValidator, */ (req, res) =>
+routes.post('/movies', MoviesValidator, (req, res) =>
     createMovieController.create(req, res)
 );
 routes.get('/movies', (req, res) =>
@@ -37,7 +37,7 @@ routes.get('/movies', (req, res) =>
 );
 routes.get('/movies/:year', (req, res) => listAllMoviesController.findByYear(req, res));
 routes.get('/movies/genre', (req, res) => listAllMoviesController.findByGenre(req, res)); */
-routes.put('/movies/:id', /* IndexValidator, */ MoviesValidator, (req, res) =>
+routes.put('/movies/:id', IndexValidator,  MoviesValidator, (req, res) =>
     updateMovieController.update(req, res)
 );
 routes.delete('/movies/:id', /* IndexValidator, */ (req, res) =>

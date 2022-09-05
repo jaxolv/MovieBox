@@ -12,7 +12,8 @@ export default class UpdateMovieService {
         duration,
         genre,
         imdb,
-        rotten
+        rottenTomatometer,
+        rottenAudience
     ) {
         try {
             const movie = await MovieModel.findByPk(id)
