@@ -22,18 +22,6 @@ export default async function UsersValidator(req, res, next) {
             .strict()
             .max(255)
             .typeError(),
-        email: yup
-            .string()
-            .required()
-            .strict()
-            .typeError(),
-        password: yup
-            .string()
-            .required()
-            .strict()
-            .typeError()
-            .min(8)
-            .max(16),
         age: yup
             .number()
             .required()
@@ -46,6 +34,11 @@ export default async function UsersValidator(req, res, next) {
             .length(3)
             .strict()
             .uppercase()
+            .typeError(),
+        email: yup
+            .string()
+            .required()
+            .strict()
             .typeError()
     })
 

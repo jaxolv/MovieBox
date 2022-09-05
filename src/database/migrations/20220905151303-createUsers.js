@@ -15,22 +15,21 @@ module.exports = {
       },
       username: {
         type: Sequelize.STRING,
-        allowNull: false,
-        unique: true
+        allowNull: false
       },
       biography: {
         type: Sequelize.STRING,
         allowNull: true
-      },
-      password_hash: {
-        type: Sequelize.STRING,
-        allowNull: false
       },
       age: {
         type: Sequelize.INTEGER,
         allowNull: false
       },
       country: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+      email: {
         type: Sequelize.STRING,
         allowNull: false
       }
@@ -41,3 +40,18 @@ module.exports = {
     return await queryInterface.dropTable('users');
   }
 };
+
+/* ADICIONANDO COLUNA email NA TABELA users:
+
+module.exports = {
+  async up (queryInterface, Sequelize) {
+    return await queryInterface.addColumn("users", "email", {
+      type: Sequelize.STRING,
+      allowNull: false
+    })
+  },
+
+  async down (queryInterface, Sequelize) {
+    return await queryInterface.removeColumn("users", "email");
+  }
+}; */

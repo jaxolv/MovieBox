@@ -4,15 +4,13 @@ import UsersModel from '../../models/users/UsersModel';
 class CreateUserService {
     constructor() { }
 
-    async create(
-        id,
+    async createUser(
         name,
         username,
         biography,
-        email,
-        password,
         age,
-        country
+        country,
+        email
     ) {
         try {
             const newUser = await UsersModel.create({
@@ -20,12 +18,12 @@ class CreateUserService {
                 name,
                 username,
                 biography,
-                email,
-                password,
                 age,
-                country
+                country,
+                email
             })
 
+            console.log(newUser)
             return newUser;
 
         } catch (error) {

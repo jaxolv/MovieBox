@@ -14,10 +14,9 @@ UsersModel.init(
         name: Sequelize.STRING,
         username: Sequelize.STRING,
         biography: Sequelize.STRING,
-        email: Sequelize.STRING,
-        password: Sequelize.STRING,
         age: Sequelize.INTEGER,
         country: Sequelize.STRING,
+        email: Sequelize.STRING
     },
     {
         sequelize,

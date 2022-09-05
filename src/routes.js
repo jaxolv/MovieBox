@@ -32,10 +32,10 @@ routes.post('/movies', MoviesValidator, (req, res) =>
 routes.get('/movies', (req, res) =>
     listAllMoviesController.index(req, res)
 );
-routes.get('/movies-by-year', (req, res) => 
+routes.get('/movies-by-year', (req, res) =>
     listAllMoviesController.year(req, res)
 );
-routes.get('/movies-by-genre', (req, res) => 
+routes.get('/movies-by-genre', (req, res) =>
     listAllMoviesController.genre(req, res)
 );
 routes.put('/movies/:id', IndexValidator, MoviesValidator, (req, res) =>
@@ -47,12 +47,11 @@ routes.delete('/movies/:id', IndexValidator, (req, res) =>
 
 // CRUD users
 import CreateUserController from "./app/controllers/users/CreateUserController";
-import ListAllUsersController from "./app/controllers/users/ListAllUsersController";
 
 const createUserController = new CreateUserController();
-const listAllUsersController = new ListAllUsersController();
 
-routes.post('/users', UsersValidator, (req, res) => createUserController.create(req, res));
-routes.get('/users', UsersValidator, (req, res) => listAllUsersController.listAll(req, res));
+routes.post('/users', (req, res) =>
+    createUserController.create(req, res)
+);
 
 export default routes;
